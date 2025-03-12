@@ -1,0 +1,289 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Общие стили */
+
+html { 
+    font-size: 18px; 
+    scroll-behavior: smooth;
+}
+
+body { 
+    width: 70%; 
+    margin: 40px auto;
+    color: #333; 
+    line-height: 1.6; 
+    background: repeating-radial-gradient(#ffffff);
+}
+
+/* Стили текста */
+
+h1, h2, h3 {
+    margin: 0 0 0.8rem 0; 
+}
+
+h1 {
+    font-size: 2.4rem;
+    color: #7f00ff; 
+}
+
+h2 {
+    font-size: 1.7rem;
+    color: #5c7aff; 
+}
+
+h3 {
+    font-size: 1.4rem;
+    color: #7f00ff;
+}
+
+p {
+    font-size: 1.1rem;
+    margin: 0 0 1rem 0;
+}
+
+/* Стили ссылок */
+a:link, a:visited, a:active {
+    color: #5cdb95; 
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Общие блоки */
+img, video {
+    width: 100%; 
+    height: auto; 
+    margin-bottom: 1.2rem; 
+}
+
+.left {
+    float: left;
+    margin: 0 1rem 1rem 0;
+}
+
+.right { 
+    float: right;
+    margin: 0 0 1rem 1rem;
+}
+
+/* Стили карусели */
+.carousel {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.carousel-inner {
+    height: 650px; /* Фиксированная высота карусели */
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: 100%; /* Растягиваем по высоте карусели */
+    object-fit: cover; /* Гарантируем, что изображение заполняет область */
+}
+
+@media (max-width: 768px) {
+    .carousel-inner {
+        height: auto; /* Высота будет зависеть от изображения */
+    }
+    .carousel-inner img {
+        object-fit: contain; /* Полностью помещает изображение в контейнер */
+        height: auto; /* Автоматическая высота */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    filter: invert(1); 
+}
+
+/* Стили таблиц */
+table { 
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    margin-top: 2.5rem;
+    background: #e3f2fd; 
+}
+
+caption {
+    font-size: 1.5rem;
+    text-align: left;
+    font-weight: bold;
+    padding: 0.8rem 0;
+}
+
+th {
+    padding: 12px 8px; 
+    font-size: 1.1rem;
+    border-bottom: 2px solid #333; 
+}
+
+td {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc; 
+}
+
+@media (max-width: 768px) {
+    table {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    table, thead, tbody, th, td, tr, caption {
+        display: block;
+    }
+    thead tr {
+        display: none;
+    }
+    table td {
+        border: none;
+        position: relative;
+        text-align: center;
+        font-size: 0.9rem;
+        border-bottom: 2px solid white;
+    }
+    td:before {
+        position: absolute;
+        top: 12px;
+        left: 10px;
+        width: 25%;
+        font-weight: bold;
+        white-space: nowrap;
+        text-align: left;
+        font-size: 0.9rem;
+    }
+    td:nth-of-type(4) {
+        border-bottom: 4px solid white;
+    }
+}
+td:nth-of-type(1)::before {
+    content: "123321";
+}
+
+td:nth-of-type(2)::before {
+    content: "123321";
+}
+
+td:nth-of-type(3)::before {
+    content: "123321";
+}
+
+td:nth-of-type(4)::before {
+    content: "123321";
+}
+ body {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Stretch carousel images full width */
+        .carousel {
+            width: 100%;
+        }
+
+        .carousel-inner img {
+            width: 100%;
+            height: 650px;
+            object-fit: cover;
+        }
+
+        /* Background glow for carousel */
+        .carousel-container {
+            position: relative;
+        }
+
+        .carousel-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Send behind the carousel */
+            pointer-events: none;
+            background: radial-gradient(circle, transparent 50%, rgba(0, 0, 0, 0.7) 100%);
+            transition: background 0.5s ease;
+        }
+
+        /* Green glow */
+        .carousel-container.green::before {
+            background: radial-gradient(circle, rgba(0, 255, 0, 0.5) 50%, rgba(0, 0, 0, 0.7) 100%);
+        }
+
+        /* Red glow */
+        .carousel-container.red::before {
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.7) 100%);
+        }
+
+        /* Neutral color for navbar */
+        .navbar {
+            background-color: #f0f0f0;
+        }
+
+.red_dragon {
+    background: #FFFFFF;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.img-hover-effect {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: visible;
+}
+
+.img-hover-effect:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px 15px rgba(255, 0, 0, 0.6); /* Красное свечение */
+}
+
+	table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+/* Чередование строк: чётные строки серые */
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Светло-серый цвет */
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff; /* Белый цвет */
+}
+	backgraund color{
+		color: aqua;
+	}
+	ul {
+    list-style-type: disc; /* Для ненумерованных списков */
+}
+
+ol {
+    list-style-type: decimal; /* Для нумерованных списков */
+}
+ul li {
+    background-image: url("images/back.jpg");/* ????????????????????????весь этот блок хз??????????????????????????????????????????????????????????????? */
+    background-size: 16px 16px; /* Подстрой размер */
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 24px; /???????????????????????????????????????это нужно для файла хз че это????????????????????????????????????????????????????????????????????????? */
+}
+
+	
+	

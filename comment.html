@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments</title>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- Google Fonts: Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Дополнительные стили для выделения форм и комментариев */
+        .form-group input, .form-group textarea {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #5cdb95;
+            box-shadow: 0 2px 10px rgba(92, 219, 149, 0.5);
+        }
+
+        .comment-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .comment-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-primary {
+            background-color: #5cdb95;
+            border-color: #5cdb95;
+            box-shadow: 0 2px 5px rgba(92, 219, 149, 0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #4acb85;
+            border-color: #4acb85;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body style="padding-top: 70px">
+    <!-- Navigation Bar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="home.html">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="home.html">home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="red dragon.html">red dragon</a></li>
+                    <li class="nav-item"><a class="nav-link" href="green devil.html">green devil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blood.html">blood</a></li>
+                    <li class="nav-item"><a class="nav-link" href="game killer.html">game killer</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="comment.html">comment</a></li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mt-5">
+        <h2 class="section-title text-center mb-4">Comments</h2>
+        <div class="comment-section">
+            <!-- Fields for name, surname, phone, and email -->
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="Enter your first name">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Enter your last name">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+            </div>
+
+            <!-- Comment field -->
+            <div class="form-group">
+                <label for="commentInput">Comment</label>
+                <textarea id="commentInput" class="form-control" placeholder="Enter your comment..." rows="4"></textarea>
+            </div>
+
+            <!-- Submit button -->
+            <button class="btn btn-primary" onclick="addComment()">Submit</button>
+
+            <!-- Comments list -->
+            <div id="comments" class="comments-list mt-4"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-4">
+        <h2 class="contact">Contact Us</h2>
+        <p>Put contact info here</p>
+    </footer>
+
+    <!-- jQuery and Bootstrap JavaScript CDN -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script>
+        function addComment() {
+            // Get values from the form
+            let firstName = document.getElementById("firstName").value.trim();
+            let lastName = document.getElementById("lastName").value.trim();
+            let phone = document.getElementById("phone").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let commentText = document.getElementById("commentInput").value.trim();
+
+            // Check if all fields are filled
+            if (firstName === "" || lastName === "" || phone === "" || email === "" || commentText === "") {
+                alert("Please fill in all fields!");
+                return;
+            }
+
+            // Create a comment element
+            let comment = document.createElement("div");
+            comment.className = "comment-item p-3 mb-3 bg-light rounded";
+
+            // Add user info and comment
+            comment.innerHTML = `
+                <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+                <p><strong>Phone:</strong> ${phone}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Comment:</strong> ${commentText}</p>
+            `;
+
+            // Add the comment to the list
+            document.getElementById("comments").appendChild(comment);
+
+            // Clear the form fields
+            document.getElementById("firstName").value = "";
+            document.getElementById("lastName").value = "";
+            document.getElementById("phone").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("commentInput").value = "";
+        }
+    </script>
+</body>
+</html>
